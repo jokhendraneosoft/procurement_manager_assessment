@@ -48,6 +48,16 @@ const defaultResponses: Record<string, string> = {
     '401': 'Unauthorized',
     '403': 'Forbidden',
     '404': 'Not found',
+    '500': 'Internal server error',
+    '503': 'Service unavailable',
+    '504': 'Gateway timeout',
+    '505': 'HTTP version not supported',
+    '506': 'Variant also negotiates',
+    '507': 'Insufficient storage',
+    '508': 'Loop detected',
+    '509': 'Bandwidth limit exceeded',
+    '510': 'Not extended',
+    '511': 'Network authentication required',
 };
 
 export const apiRegistry: RouteSpec[] = [
