@@ -17,7 +17,6 @@ Production-grade REST API for Procurement Management. Built with **Node.js**, **
 ### 1. Install dependencies
 
 ```bash
-cd backend
 npm install
 ```
 
@@ -187,6 +186,3 @@ backend/
 
 ---
 
-## License
-
-ISC
