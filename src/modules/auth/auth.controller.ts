@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { loginService } from './auth.service';
+import { loginService, refreshService } from './auth.service';
 import { ApiResponse } from '../../utils/ApiResponse';
 import { asyncHandler } from '../../utils/asyncHandler';
 import { revokeToken } from '../../utils/jwtBlacklist';
@@ -10,6 +10,16 @@ export const login = asyncHandler(
 
         res.status(200).json(
             new ApiResponse(200, 'Login successful', result),
+        );
+    },
+);
+
+export const refresh = asyncHandler(
+    async (req: Request, res: Response, _next: NextFunction): Promise<void> => {
+        const { refreshToken } = req.body as { refreshToken: string };
+        const result = await refreshService(refreshToken);
+        res.status(200).json(
+            new ApiResponse(200, 'Token refreshed', result),
         );
     },
 );

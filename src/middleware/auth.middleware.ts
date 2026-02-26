@@ -23,8 +23,11 @@ export const authenticate = (
     }
 
     try {
-        const decoded = jwt.verify(token, env.JWT_SECRET) as IUserPayload;
-        req.user = decoded;
+        const decoded = jwt.verify(token, env.JWT_SECRET) as IUserPayload & { type?: string };
+        if (decoded.type === 'refresh') {
+            return next(ApiError.unauthorized('Use the refresh token endpoint to get a new access token'));
+        }
+        req.user = decoded as IUserPayload;
         next();
     } catch {
         next(ApiError.unauthorized('Invalid or expired token'));

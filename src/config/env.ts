@@ -22,6 +22,7 @@ export const env = {
     MONGODB_URI: required('MONGODB_URI'),
     JWT_SECRET: jwtSecret,
     JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN ?? '7d',
+    JWT_REFRESH_EXPIRES_IN: process.env.JWT_REFRESH_EXPIRES_IN ?? '30d',
     UPLOAD_DIR: process.env.UPLOAD_DIR ?? 'uploads',
     MAX_FILE_SIZE: parseInt(process.env.MAX_FILE_SIZE ?? '5242880', 10),
     isDev: (process.env.NODE_ENV ?? 'development') === 'development',

@@ -18,3 +18,9 @@ export const loginSchema = Joi.object({
         'object.xor': 'Provide either email or mobile number, not both',
         'object.missing': 'Either email or mobile number is required',
     });
+
+export const refreshSchema = Joi.object({
+    refreshToken: Joi.string().required().messages({
+        'any.required': 'Refresh token is required',
+    }),
+});
